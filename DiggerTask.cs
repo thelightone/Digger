@@ -22,7 +22,7 @@ namespace Digger
     public class Player:  ICreature
     {
         public string GetImageFileName()
-        { return ""; }
+        { return "xccc"; }
         public int GetDrawingPriority()
         { return 0; }
         public CreatureCommand Act(int x, int y)
