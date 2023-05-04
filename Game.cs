@@ -20,8 +20,8 @@ TSTSTT TT";
 
         private const string mapWithPlayerTerrainSackGoldMonster = @"
 PTTGTT TST
-TST  TSTTM
-TTT TTSTTT
+TST  TTTTM
+TTT TTTTTT
 T TSTS TTT
 T TTTGMSTS
 T TMT M TS
@@ -29,6 +29,16 @@ TSTSTTMTTT
 S TTST  TG
  TGST MTTT
  T  TMTTTT";
+
+
+        private const string map = @"
+TTTTTTTTT
+TTTTTTTTT
+TTTTTTTTT
+TTTTMTTTT
+TTTTTTTTT
+TTTTTTTTT
+TTTTTTTTT";
 
         public static ICreature[,] Map;
         public static int Scores;
@@ -40,7 +50,7 @@ S TTST  TG
 
         public static void CreateMap()
         {
-            Map = CreatureMapCreator.CreateMap(mapWithPlayerTerrain);
+            Map = CreatureMapCreator.CreateMap(mapWithPlayerTerrainSackGoldMonster);
         }
     }
 }

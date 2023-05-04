@@ -9,7 +9,7 @@ namespace Digger
 {
     public class DiggerWindow : Form
     {
-        private readonly Dictionary<string, Bitmap> bitmaps = new Dictionary<string, Bitmap>();
+        private readonly Dictionary<string, Image> bitmaps = new Dictionary<string, Image>();
         private readonly GameState gameState;
         private readonly HashSet<Keys> pressedKeys = new HashSet<Keys>();
         private int tickCount;
@@ -24,8 +24,12 @@ namespace Digger
             FormBorderStyle = FormBorderStyle.FixedDialog;
             if (imagesDirectory == null)
                 imagesDirectory = new DirectoryInfo("Images");
-            foreach (var e in imagesDirectory.GetFiles("*.png"))
-                bitmaps[e.Name] = (Bitmap) Image.FromFile(e.FullName);
+        
+            foreach (var e in imagesDirectory.GetFiles())
+            {
+               
+                bitmaps[e.Name] = Image.FromFile(e.FullName); ;
+            }
             var timer = new Timer();
             timer.Interval = 15;
             timer.Tick += TimerTick;
@@ -57,6 +61,7 @@ namespace Digger
             e.Graphics.FillRectangle(
                 Brushes.Black, 0, 0, GameState.ElementSize * Game.MapWidth,
                 GameState.ElementSize * Game.MapHeight);
+         
             foreach (var a in gameState.Animations)
                 e.Graphics.DrawImage(bitmaps[a.Creature.GetImageFileName()], a.Location);
             e.Graphics.ResetTransform();
